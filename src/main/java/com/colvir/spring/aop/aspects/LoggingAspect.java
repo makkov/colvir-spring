@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingAspect {
 
-    @Pointcut("execution(public void print*())")
+    @Pointcut("execution(public void com.colvir.spring.aop.EmployeeService.print*())")
     public void printPatternMethod() {
 
     }
@@ -24,18 +24,23 @@ public class LoggingAspect {
         System.out.println("Повторное напоминание: вызван метод print*");
     }
 
-    @Before("execution(* *())")
-    public void printAllEmptyMethodsCall() {
-        System.out.println("Вызван метод без аргументов");
+    @Before("execution(public void com.colvir.spring.aop.ClientService.print*())")
+    public void printPatternForClientService() {
+        System.out.println("Вызван printAll для ClientService");
     }
 
-    @Before("execution(* *(String, String))")
-    public void printTwoInputStringsCall() {
-        System.out.println("Вызван метод, который на входе принимает две строки");
-    }
-
-    @Before("execution(* *(..))")
-    public void printAllMethodsCall() {
-        System.out.println("Вызывается любой метод");
-    }
+//    @Before("execution(* *())")
+//    public void printAllEmptyMethodsCall() {
+//        System.out.println("Вызван метод без аргументов");
+//    }
+//
+//    @Before("execution(* *(String, String))")
+//    public void printTwoInputStringsCall() {
+//        System.out.println("Вызван метод, который на входе принимает две строки");
+//    }
+//
+//    @Before("execution(* *(..))")
+//    public void printAllMethodsCall() {
+//        System.out.println("Вызывается любой метод");
+//    }
 }

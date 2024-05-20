@@ -15,6 +15,9 @@ public class Main {
         employeeService.printAll();
         employeeService.printFirst();
 
+        ClientService clientService = context.getBean("clientService", ClientService.class);
+        clientService.printAll();
+
         context.close();
     }
 }
