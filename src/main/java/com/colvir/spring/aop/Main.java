@@ -9,15 +9,14 @@ public class Main {
 
         EmployeeService employeeService = context.getBean("employeeService", EmployeeService.class);
 
-        employeeService.add("Ivan", "Ivanov");
-        employeeService.add("Petr", "Petrov");
+        Credentials credentials1 = new Credentials("ivan", "pass", "pass");
+        employeeService.add(credentials1, "Ivan", "Ivanov");
+
+        Credentials credentials2 = new Credentials("petr", "pass", "pass1");
+        employeeService.add(credentials2, "Petr", "Petrov");
+
 
         employeeService.printAll();
-        employeeService.printFirst();
-
-        ClientService clientService = context.getBean("clientService", ClientService.class);
-        clientService.printAll();
-
         context.close();
     }
 }
