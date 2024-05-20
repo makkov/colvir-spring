@@ -10,20 +10,20 @@
     <context:property-placeholder location="application.properties"/>
 
     <bean id="animalBean"
-          class="com.colvir.spring.Cat"
+          class="com.colvir.spring.demo.Cat"
           init-method="init"
           destroy-method="destroy">
     </bean>
 
     <!--    Инъекция через конструктор-->
     <!--    <bean id="ownerBean"-->
-    <!--          class="com.colvir.spring.Owner">-->
+    <!--          class="com.colvir.spring.demo.Owner">-->
     <!--        <constructor-arg name="animal" ref="animalBean"/>-->
     <!--    </bean>-->
 
 <!--        Инъекция через сеттер-->
     <bean id="ownerBean"
-          class="com.colvir.spring.Owner">
+          class="com.colvir.spring.demo.Owner">
         <property name="animal" ref="animalBean"/>
         <property name="login" value="${owner.name}"/>
     </bean>

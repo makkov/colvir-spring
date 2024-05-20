@@ -1,4 +1,4 @@
-package com.colvir.spring;
+package com.colvir.spring.demo;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
