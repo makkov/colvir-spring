@@ -1,6 +1,7 @@
 package com.colvir.spring.aop.aspects;
 
 import com.colvir.spring.aop.Credentials;
+import com.colvir.spring.aop.Employee;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class SecurityAspect {
 
     @Around("execution(* *(com.colvir.spring.aop.Credentials, ..))")
-    public void checkCreds(ProceedingJoinPoint proceedingJoinPoint) {
+    public Employee checkCreds(ProceedingJoinPoint proceedingJoinPoint) {
         System.out.println("Был вызван метод " + proceedingJoinPoint.getSignature().getName());
 
         Object[] objects = proceedingJoinPoint.getArgs();
@@ -33,10 +34,16 @@ public class SecurityAspect {
             throw new RuntimeException("Пароли не совпадают!");
         }
 
+        Employee employee = null;
+
         try {
-            proceedingJoinPoint.proceed();
+            employee = (Employee) proceedingJoinPoint.proceed();
         } catch (Throwable e) {
             e.printStackTrace();
         }
+
+        employee.setSecondName("Товарищ " + employee.getSecondName());
+
+        return employee;
     }
 }

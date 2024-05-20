@@ -10,9 +10,10 @@ public class EmployeeService {
 
     private List<Employee> employees = new ArrayList<>();
 
-    public void add(Credentials credentials, String name, String secondName) {
+    public Employee add(Credentials credentials, String name, String secondName) {
         Employee newEmployee = new Employee(name, secondName);
         employees.add(newEmployee);
+        return newEmployee;
     }
 
     public void printAll() {

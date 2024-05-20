@@ -10,13 +10,13 @@ public class Main {
         EmployeeService employeeService = context.getBean("employeeService", EmployeeService.class);
 
         Credentials credentials1 = new Credentials("ivan", "pass", "pass");
-        employeeService.add(credentials1, "Ivan", "Ivanov");
+        System.out.println(employeeService.add(credentials1, "Ivan", "Ivanov"));
 
-        Credentials credentials2 = new Credentials("petr", "pass", "pass1");
-        employeeService.add(credentials2, "Petr", "Petrov");
-
+        Credentials credentials2 = new Credentials("petr", "pass", "pass");
+        System.out.println(employeeService.add(credentials2, "Petr", "Petrov"));
 
         employeeService.printAll();
+
         context.close();
     }
 }
